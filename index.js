@@ -90,6 +90,7 @@ const main = async () => {
         ],
         files: {
             '/home/web_user/demo/demo1.md': await loadFile('files/demo1.md'),
+            '/home/web_user/demo/demo2.md': await loadFile('files/demo2.md'),
             '/home/web_user/.vim/vimrc': await loadFile('files/vimrc')
         },
         fetchFiles: { }

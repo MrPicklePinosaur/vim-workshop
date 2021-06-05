@@ -25,7 +25,7 @@
 -> **try it out** <-
 
 ## web [recommended]
-i have a hosted version of vim for you to try out [here](#)
+i have a hosted version of vim for you to try out [here](https://vim.danieliu.xyz)
 the web version comes with my configuration file builtin
 
 ## vscode
@@ -189,11 +189,6 @@ V
 ## global substituting
 :%s/<search>/<replace>/g
 
-
--------------------------------------------------
-
--> **configuration** <-
-
 -------------------------------------------------
 
 -> **advanced tips** <-
@@ -218,6 +213,10 @@ di( da(
 
 -> **advanced tips** <-
 -> macros <-
+
+q<letter> to record
+q again to stop
+@<letter> to call macro
 
 -------------------------------------------------
 
