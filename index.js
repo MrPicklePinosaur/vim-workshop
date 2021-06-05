@@ -1,4 +1,10 @@
-import { VimWasm } from './node_modules/vim-wasm/vimwasm.js';
+import { VimWasm, checkBrowserCompatibility } from './node_modules/vim-wasm/vimwasm.js';
+
+// check browser compatibility
+const errmsg = checkBrowserCompatibility();
+if (errmsg !== undefined) {
+    alert(errmsg);
+}
 
 const screenCanvasElement = document.getElementById('vim-screen');
 const vim = new VimWasm({
@@ -34,7 +40,7 @@ screenCanvasElement.addEventListener(
 );
 
 vim.onVimExit = status => {
-    alert(`Vim exited with status ${status}`);
+    alert(`Vim exited with status ${status}; Reload the page to start it back up!`);
 };
 
 vim.onFileExport = (fullpath, contents) => {
@@ -58,4 +64,39 @@ vim.onWriteClipboard = navigator.clipboard.writeText;
 
 vim.onError = console.error;
 
-vim.start();
+// get demo files from fs
+const loadFile = (filepath) => {
+    const header = {
+        'Content-Type': 'text/plain',
+        'Accept': 'text/plain'
+    }
+
+    return fetch(filepath, { headers: header })
+        .then(async (res) => {
+            return await res.text();
+        })
+        .catch(err => {
+            return '';
+        })
+}
+
+const main = async () => {
+
+    vim.start({
+        cmdArgs: ['/home/web_user/demo/demo1.md'],
+        dirs: [
+            '/home/web_user/demo',
+            '/home/web_user/.vim/autoload'
+        ],
+        files: {
+            '/home/web_user/demo/demo1.md': await loadFile('files/demo1.md'),
+            '/home/web_user/.vim/vimrc': await loadFile('files/vimrc')
+        },
+        fetchFiles: { }
+    });
+
+
+}
+
+main();
+
