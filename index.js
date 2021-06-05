@@ -91,11 +91,13 @@ const main = async () => {
         files: {
             '/home/web_user/demo/demo1.md': await loadFile('files/demo1.md'),
             '/home/web_user/demo/demo2.md': await loadFile('files/demo2.md'),
+            '/home/web_user/demo/prac1_grammarfix.md': await loadFile('files/prac1_grammarfix.md'),
+            '/home/web_user/demo/prac2_twosum.md': await loadFile('files/prac1_twosum.md'),
+            '/home/web_user/demo/prac3_refactor.c': await loadFile('files/prac3_refactor.c'),
             '/home/web_user/.vim/vimrc': await loadFile('files/vimrc')
         },
         fetchFiles: { }
     });
-
 
 }
 
